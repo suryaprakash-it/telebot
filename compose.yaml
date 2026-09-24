@@ -1,0 +1,15 @@
+services:
+  linkdrop:
+    build: .
+    env_file: .env
+    restart: unless-stopped
+    init: true
+    environment:
+      DATA_DIR: /data
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+    volumes:
+      - linkdrop-data:/data
+
+volumes:
+  linkdrop-data:
